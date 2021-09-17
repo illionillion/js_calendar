@@ -41,7 +41,7 @@ function get_date(m){
       if(j>=week || i>1){
         if (day<=end_month_day.getDate()) {
           week_list[j]=day;
-          console.log(day);
+          // console.log(day);
           day++;
           // console.log(end_month_day.getDate());
         }
@@ -53,7 +53,9 @@ function get_date(m){
         
       // }
     }
+    // console.log(week_list);
     date_data[i]=week_list;
+    
   }
   console.table(date_data);
   console.log(date_data);
@@ -73,6 +75,15 @@ function get_date(m){
 
 }
 
+function delete_undefined(data){
+  if (!data) {
+    return "" ;
+  }
+  if (data) {
+    return data ;
+  }
+}
+
 function make_calendar(){
 
   const calendar=document.getElementById("calender_date");
@@ -85,7 +96,7 @@ function make_calendar(){
     for(let j=0;j<date_data[i].length;j++){
 
       let td_ele=document.createElement("td");
-      td_ele.innerHTML=date_data[i][j];
+      td_ele.innerHTML=delete_undefined(date_data[i][j]);
       tr_ele.appendChild(td_ele);
 
     }
