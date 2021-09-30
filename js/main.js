@@ -5,27 +5,68 @@ let date_data=[
   ["日","月","火","水","木","金","土"]
 ]
 
-function get_date(m){
+function make_year_select() {
+  console.log(new Date().getFullYear());
+  console.log(new Date().getMonth()+1);
 
+  const ny=new Date().getFullYear();
+  const nm=new Date().getMonth()+1;
+  // console.log(nm);
+  // document.getElementById("month_select").value=ny+"-"+nm;
 
-  //今日の日付データ
-  let now_date=new Date();
-  now_date.setDate(1);//月初
-  
-  if (m) {
-    //今日の日付データ
-    now_date=new Date(now_date.getFullYear(),m-1);
-    now_date.setDate(1);//月初
+  //過去10年
+  for (let i = 10; i >= 1; i--) {
+    // console.log(i);
+    const y_ele_p=document.createElement("option");
+    y_ele_p.value=ny-i;
+    y_ele_p.innerHTML=ny-i;
+    document.getElementById("year_select").appendChild(y_ele_p);
+    
   }
-  // console.log(new Date(now_date.getFullYear(),now_date.getMonth()));
-  
-  let end_month_day=new Date(now_date.getFullYear(), now_date.getMonth() + 1, 0);//月末
+
+  const y_ele=document.createElement("option");
+  y_ele.value=ny;
+  y_ele.innerHTML=ny;
+  y_ele.selected=true;
+  document.getElementById("year_select").appendChild(y_ele);
+
+  //未来10年
+  for (let i = 1; i <= 10; i++) {
+
+    const y_ele_f=document.createElement("option");
+    y_ele_f.value=ny+i;
+    y_ele_f.innerHTML=ny+i;
+    document.getElementById("year_select").appendChild(y_ele_f);
+    
+  }
+
+  //月
+  for (let i = 1; i <= 12; i++) {
+    const m_ele=document.createElement("option");
+    m_ele.value=i;
+    m_ele.innerHTML=i;
+    if (i===nm) {
+      m_ele.selected=true;
+    }
+    document.getElementById("month_select").appendChild(m_ele);
+  }
+}
+
+function get_day(){
+  const ny=document.getElementById("year_select").value;
+  const nm=document.getElementById("month_select").value;
+  let nds=new Date(ny,nm-1);//初日
+  nds.setDate(1)
+  console.log(nds);
+
+  let nde=new Date(ny,nm,0);//月末
+  console.log(nde);
 
   //年・月・日・曜日を取得する
-  let year = now_date.getFullYear();
-  let month = now_date.getMonth()+1;
-  let week = now_date.getDay();
-  let day = now_date.getDate();
+  let year = nds.getFullYear();
+  let month = nds.getMonth()+1;
+  let week = nds.getDay();
+  let day = nds.getDate();
 
   console.log("西暦"+year+"年"+month+"月"+day+"日 "+date_data[0][week]+"曜日");
   console.log(day);
@@ -39,14 +80,14 @@ function get_date(m){
         week_list[j]="　";
       }
       if(j>=week || i>1){
-        if (day<=end_month_day.getDate()) {
+        if (day<=nde.getDate()) {
           week_list[j]=day;
           // console.log(day);
           day++;
           // console.log(end_month_day.getDate());
         }
       }
-      if(j>end_month_day.getDay() && i==6) {
+      if(j>nde.getDay() && i==6) {
         week_list[j]="　";
       }
       // if (i<6) {
@@ -61,18 +102,6 @@ function get_date(m){
   console.log(date_data);
 
   document.getElementById("month").innerHTML=month+"月";
-  document.getElementById("last").setAttribute("month_data",now_date.getMonth());
-  document.getElementById("last").onclick=function(){
-    console.log(now_date.getMonth());//0の場合今月に戻る
-    get_date(now_date.getMonth());make_calendar();
-  };
-  document.getElementById("next").setAttribute("month_data",now_date.getMonth()+2);
-  document.getElementById("next").onclick=function(){
-    console.log(now_date.getMonth()+2);
-    get_date(now_date.getMonth()+2);make_calendar();
-  };
-
-
 }
 
 function delete_undefined(data){
@@ -106,6 +135,15 @@ function make_calendar(){
 }
 
 window.onload=function(){
-  get_date();
+  make_year_select();
+  get_day();
   make_calendar();
+  document.getElementById("year_select").addEventListener("change",function () {
+    get_day();
+    make_calendar();
+  })
+  document.getElementById("month_select").addEventListener("change",function () {
+    get_day();
+    make_calendar();
+  })
 }
