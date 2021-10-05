@@ -1,5 +1,5 @@
 'use strict';
-console.log("ok");
+// console.log("ok");
 
 let date_data=[
   ["日","月","火","水","木","金","土"]
@@ -76,7 +76,7 @@ function get_day(){
     let week_list=[];
     for (let j = 0; j < 7; j++) {
 
-      if (j<week && i==1) {
+      if (j<week && i==1) {//1週目の1日目が始まるまでの曜日
         week_list[j]="　";
       }
       if(j>=week || i>1){
@@ -85,9 +85,16 @@ function get_day(){
           // console.log(day);
           day++;
           // console.log(end_month_day.getDate());
+        }else{
+          day++;//ここでもインクリメントさせる
         }
       }
-      if(j>nde.getDay() && i==6) {
+      // console.log(j);
+      // console.log(nde.getDay());
+      // console.log(i);
+      // console.log(day);
+      // console.log(nde.getDate());
+      if(day>nde.getDate()+1) {
         week_list[j]="　";
       }
       // if (i<6) {
