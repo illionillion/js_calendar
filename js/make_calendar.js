@@ -1,6 +1,8 @@
 function get_day(){
   const ny=document.getElementById("year_select").value;
   const nm=document.getElementById("month_select").value;
+  // console.log(ny);
+  // console.log(nm);
   let nds=new Date(ny,nm-1);//初日
   nds.setDate(1)
   console.log(nds);
@@ -55,4 +57,11 @@ function get_day(){
   console.log(date_data);
 
   document.getElementById("month").innerHTML=month+"月";
+}
+
+function pluszero(date) {
+  if (date>0 && date<10) {
+    return "0"+date;
+  }
+  return date;
 }
