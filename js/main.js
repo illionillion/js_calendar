@@ -16,7 +16,7 @@ function next_month() {
   if (now_m>12) {
     now_m=1;
     now_y++;
-    if (getOptionElement(ele_y,now_y)) {
+    if (getOptionElement(ele_y,now_y)!=null) {
         ele_y.selectedIndex=getOptionElement(ele_y,now_y);
     }else{
       return;
@@ -38,7 +38,7 @@ function last_month() {
   if (now_m<1) {
     now_m=12;
     now_y--;
-    if (getOptionElement(ele_y,now_y)) {
+    if (getOptionElement(ele_y,now_y)!=null) {
         ele_y.selectedIndex=getOptionElement(ele_y,now_y);
     }else{
       return;
@@ -52,8 +52,9 @@ function last_month() {
 
 //selectタグのvalueからindexを取得するプログラム
 function getOptionElement(select_tag , value){
-  for(var i=0; i<select_tag.options.length; i++){
-    if(select_tag.options[i].value == value){return i;}
+  for(let i=0; i<select_tag.options.length; i++){
+    // console.log(select_tag.options[i].value+"=="+value+":"+i);
+    if(select_tag.options[i].value == value){return Number(i);}
   }
   return null;
 }
