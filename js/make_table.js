@@ -9,23 +9,34 @@ function delete_undefined(data){
 
 function make_table(){
 
+  const calendar_heaad=document.getElementById("calender_week");
   const calendar=document.getElementById("calender_date");
+  calendar_heaad.innerHTML="";
   calendar.innerHTML="";
+  let week_hold=new Array;
   for (let i = 0; i < date_data.length; i++) {
     
     let tr_ele=document.createElement("tr");
-    calendar.appendChild(tr_ele);
+    if (i==0) {
+      calendar_heaad.appendChild(tr_ele);
+    }else{
+      calendar.appendChild(tr_ele);
+    }
 
     for(let j=0;j<date_data[i].length;j++){
 
       let td_ele=document.createElement("td");
+      if (i==0) {
+        week_hold.push(date_data[i][j]);
+      }
+      // console.log(week_hold);
       td_ele.innerHTML=pluszero(date_data[i][j]);
-      // td_ele.setAttribute("data-date",date_data[i][j]);
       td_ele.dataset.date=date_data[i][j]; //カスタムデータ設定
-      // td_ele.setAttribute("data-row",i);
       td_ele.dataset.row=i;
-      // td_ele.setAttribute("data-col",j);
       td_ele.dataset.col=j;
+      if (i!=0) {
+        td_ele.dataset.week=week_hold[j];
+      }
       td_ele.addEventListener("click",function () {
         get_customdata(this);
       })
