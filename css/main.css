@@ -1,3 +1,8 @@
-#calender_date{
+#calender{
     text-align: center;
+}
+
+#calender_week{
+    background-color: rgb(0, 0, 0);
+    color: #fff;
 }
