@@ -37,6 +37,17 @@ function make_table(){
       if (i!=0) {
         td_ele.dataset.week=week_hold[j];
       }
+      if (j==6) {
+        td_ele.classList.add("saturday");
+      }
+      if (j==0) {
+        td_ele.classList.add("sunday");
+      }
+      const ny=document.getElementById("year_select").value;
+      const nm=document.getElementById("month_select").value;
+      if (date_data[i][j]==new Date().getDate() && ny==new Date().getFullYear() && nm==new Date().getMonth()+1) {
+        td_ele.classList.add("today");
+      }
       td_ele.addEventListener("click",function () {
         get_customdata(this);
       })
