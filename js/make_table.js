@@ -14,15 +14,12 @@ function make_table(){
   calendar_heaad.innerHTML="";
   calendar.innerHTML="";
   let week_hold=new Array;
+  let tr_fragment=document.createDocumentFragment();
   for (let i = 0; i < date_data.length; i++) {
     
     let tr_ele=document.createElement("tr");
-    if (i==0) {
-      calendar_heaad.appendChild(tr_ele);
-    }else{
-      calendar.appendChild(tr_ele);
-    }
-
+    //fragmentで高速化
+    let td_fragment = document.createDocumentFragment();
     for(let j=0;j<date_data[i].length;j++){
 
       let td_ele=document.createElement("td");
@@ -47,14 +44,22 @@ function make_table(){
       const nm=document.getElementById("month_select").value;
       if (date_data[i][j]==new Date().getDate() && ny==new Date().getFullYear() && nm==new Date().getMonth()+1) {
         td_ele.classList.add("today");
+        td_ele.innerHTML="<span>"+pluszero(date_data[i][j])+"</span>";
       }
       td_ele.addEventListener("click",function () {
         get_customdata(this);
       })
-      tr_ele.appendChild(td_ele);
-
+      // tr_ele.appendChild(td_ele);
+      td_fragment.appendChild(td_ele);
     }
-    
+      tr_ele.appendChild(td_fragment);
+      tr_fragment.appendChild(tr_ele);
+
+      if (i==0) {
+        calendar_heaad.appendChild(tr_fragment);
+      }else{
+        calendar.appendChild(tr_fragment);
+      }
   }
 
 }
