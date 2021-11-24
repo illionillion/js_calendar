@@ -18,10 +18,18 @@ function get_day(){
 
   console.log("西暦"+year+"年"+month+"月"+day+"日 "+date_data[0][week]+"曜日");
   console.log(day);
+  date_data=[
+    ["日","月","火","水","木","金","土"]
+  ];//初期化
 
   for (let i = 1; i < 7; i++) {
     
     let week_list=[];
+    // console.log(day+">="+(nde.getDate()+1));
+    if (i==6 && day>=nde.getDate()+1) {
+      // console.log(day+">"+(nde.getDate()+1));
+      break;//最終週の時、全行からの場合を防ぐ
+    }
     for (let j = 0; j < 7; j++) {
 
       if (j<week && i==1) {//1週目の1日目が始まるまでの曜日
@@ -45,9 +53,6 @@ function get_day(){
       if(day>nde.getDate()+1) {
         week_list[j]="　";
       }
-      // if (i<6) {
-        
-      // }
     }
     // console.log(week_list);
     date_data[i]=week_list;
