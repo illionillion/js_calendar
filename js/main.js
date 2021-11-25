@@ -78,5 +78,5 @@ window.onload=function(){
   document.getElementById("next").addEventListener("click",function () {
     next_month();
   })
-
+  $("#ss_btn").click(function(){ take_ss(); })
 }
