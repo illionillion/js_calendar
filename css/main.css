@@ -5,13 +5,23 @@
 
 #calender{
     text-align: center;
-    margin: auto;
+    /* margin: auto; */
     /* width: 80%;
     height: 80%; */
     /* height: 232px; */
+    /* display: block; */
+    /* display: inline; */
 }
 
 #frame{
+    margin: auto;
+    text-align: center;
+    
+}
+
+.wraper{
+    margin: auto;
+    width: 181px;
     height: 235px;
 }
 
