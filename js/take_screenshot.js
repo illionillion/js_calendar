@@ -7,7 +7,7 @@ function take_ss(){
         const imgData = canvas.toDataURL();
         const downloadtag=document.createElement("a");
         // document.body.appendChild(downloadtag); //appendChildする必要あるのか？
-        downloadtag.download="カレンダー";
+        downloadtag.download=$("#year_select").val()+"年"+$("#month_select").val()+"月カレンダー";
         downloadtag.href=imgData;
         downloadtag.click();
         // downloadtag.remove();
