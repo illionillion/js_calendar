@@ -58,9 +58,7 @@ function getOptionElement(select_tag , value){
   }
   return null;
 }
-
-window.onload=function(){
-
+$(window).on("load",function(){
   make_year_select();
   get_day();
   make_table();
@@ -78,5 +76,5 @@ window.onload=function(){
   document.getElementById("next").addEventListener("click",function () {
     next_month();
   })
-  $("#ss_btn").click(function(){ take_ss(); })
-}
+  $("#ss_btn").click(function(){ take_ss(); })  
+})
