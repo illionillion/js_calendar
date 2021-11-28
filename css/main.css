@@ -21,8 +21,15 @@
 
 .wraper{
     margin: auto;
-    width: 181px;
-    height: 235px;
+    width: 185px;
+    /* height: 235px; */
+}
+
+#editarea{
+    text-align: left;
+    width: 97%;
+    /* height: 60px; */
+    border: 1px solid black;
 }
 
 #calender_week{
