@@ -46,8 +46,14 @@
 }
 
 .today span{
+    color: #000;
     background-color: yellow;
     border-radius: 50%;
+}
+
+.check{
+    background-color: red;
+    color: #fff;
 }
 
 #controller{

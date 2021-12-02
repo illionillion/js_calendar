@@ -48,6 +48,7 @@ function make_table(){
       }
       td_ele.addEventListener("click",function () {
         get_customdata(this);
+        check_calendar(this);
       })
       // tr_ele.appendChild(td_ele);
       td_fragment.appendChild(td_ele);
