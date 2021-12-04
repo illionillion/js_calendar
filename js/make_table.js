@@ -31,6 +31,9 @@ function make_table(){
       td_ele.dataset.date=date_data[i][j]; //カスタムデータ設定
       td_ele.dataset.row=i;
       td_ele.dataset.col=j;
+      if ($(td_ele).html()=="　") {
+        $(td_ele).addClass("none_date");
+      }
       if (i!=0) {
         td_ele.dataset.week=week_hold[j];
       }
