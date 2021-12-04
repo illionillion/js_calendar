@@ -25,42 +25,15 @@
     /* height: 235px; */
 }
 
+#ss_btn{
+    margin: 10px;
+}
+
 #editarea{
     text-align: left;
     width: 97%;
     /* height: 60px; */
     border: 1px solid black;
-}
-
-#calender_week{
-    background-color: rgb(167, 167, 167);
-    color: #fff;
-}
-
-.saturday{
-    color: blue;
-}
-
-.sunday{
-    color: red;
-}
-
-.today span{
-    color: #000;
-    background-color: yellow;
-    border-radius: 50%;
-}
-
-.check{
-    background-color: red;
-    color: #fff;
-}
-
-/* データがない場合グレーの斜線 */
-.none_date{
-    background-color: #ECECEC;
-    background-image: -webkit-gradient(linear, 0 0, 100% 100%,color-stop(.25, #F9F9F9), color-stop(.25, transparent),color-stop(.5, transparent), color-stop(.5, #F9F9F9),color-stop(.75, #F9F9F9), color-stop(.75, transparent),to(transparent));
-    -webkit-background-size: 14px 14px;
 }
 
 #controller{
