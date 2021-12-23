@@ -28,11 +28,16 @@ function make_table(){
       }
       // console.log(week_hold);
       td_ele.innerHTML=pluszero(date_data[i][j]);
+      td_ele.dataset.year=$("#year_select").val(); //カスタムデータ設定
+      td_ele.dataset.month=$("#month_select").val(); //カスタムデータ設定
       td_ele.dataset.date=date_data[i][j]; //カスタムデータ設定
       td_ele.dataset.row=i;
       td_ele.dataset.col=j;
       if ($(td_ele).html()=="　") {
         $(td_ele).addClass("none_date");
+      }
+      if (check_memory.indexOf(call_check_date(td_ele))!=-1) {
+        $(td_ele).addClass("check");
       }
       if (i!=0) {
         td_ele.dataset.week=week_hold[j];
@@ -50,7 +55,7 @@ function make_table(){
         td_ele.innerHTML="<span>"+pluszero(date_data[i][j])+"</span>";
       }
       td_ele.addEventListener("click",function () {
-        get_customdata(this);
+        // get_customdata(this);
         check_calendar(this);
       })
       // tr_ele.appendChild(td_ele);

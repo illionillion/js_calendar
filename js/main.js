@@ -4,6 +4,7 @@
 let date_data=[
   ["日","月","火","水","木","金","土"]
 ]
+let check_memory=[];
 
 //来月取得
 function next_month() {
